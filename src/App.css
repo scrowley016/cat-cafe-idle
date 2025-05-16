@@ -1,38 +1,269 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Shadows+Into+Light&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff6ec;
+  font-family: 'Quicksand', sans-serif;
+  color: #5a3e36;
+}
+
+h1,
+h2 {
+  font-family: 'Shadows Into Light', cursive;
+  color: #6e4b3a;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
   text-align: center;
+  padding: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  background-color: #f7c6a3;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:hover {
+  background-color: #f3a97a;
+  transform: translateY(-2px);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.stats,
+.upgrade-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+}
+
+.upgrades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.upgrade-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #fff7f0;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.upgrade-card:hover {
+  transform: translateY(-3px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.upgrade-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.upgrade-card p {
+  margin: 4px 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.floating-coin {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #d28e2e;
+  animation: floatUp 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+/* Responsive two-column layout for main-section */
+.main-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.main-section > .stats {
+  flex: 1 1 300px;
+}
+
+@media (max-width: 600px) {
+  .main-section {
+    flex-direction: column;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .upgrades button {
+    width: 100%;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fcefe3;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #e0cbbd;
+}
+
+.game-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.panel {
+  width: 240px;
+  background: #fffaf5;
+  border-right: 2px solid #eee;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cat-roster {
+  border-left: 2px solid #eee;
+}
+
+.scroll-area {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 5px;
+}
+
+.cafe-area {
+  flex: 1;
+  position: relative;
+  background: #fff9f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.upgrade-card {
+  background: #fff;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  background: #f5c8aa;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+
+@media (max-width: 768px) {
+  .hud {
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .game-body {
+    flex-direction: column;
+  }
+
+  .panel {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    border: none;
+    order: 3;
+  }
+
+  .cat-roster {
+    order: 2;
+    border-left: none;
+    border-top: 1px solid #eee;
+  }
+
+  .cafe-area {
+    flex: 1;
+    order: 1;
+    height: 100%;
+  }
+
+  .scroll-area {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .upgrade-card button,
+  .hud button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+.mobile-toggle {
+  display: none;
+  padding: 10px;
+  text-align: center;
+  background-color: #fffaf5;
+  border-top: 2px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
   }
 }

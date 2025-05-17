@@ -221,29 +221,19 @@ const handleClick = (e) => {
 
   return (
     <div className="game-container">
-      <div className="cafe-tabs">
-        {cafes.map((cafe, i) => (
-          <button
-            key={cafe.id}
-            onClick={() => setCurrentCafeIndex(i)}
-            className={currentCafeIndex === i ? "active" : ""}
-          >
-            {cafe.name}
-          </button>
-        ))}
-      </div>
       <header className="hud">
-        <div>💰 Coins: {coins}</div>
-        <div>⚡ CPS: {coinsPerSecond}</div>
-        <button onClick={handleClick}>☕ Serve Customer</button>
-        <button onClick={hireCat}>
-          🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
+        <div className="coin">
+          <div> <h2>💰 Coins: {coins}</h2></div>
+          <div> <h3>⚡ Coins Per Second: {coinsPerSecond}</h3></div>
+        </div>
+        <button onClick={handleClick} className="serve-btn">
+          ☕ Serve Customer
         </button>
       </header>
 
       <div className="game-body">
         <aside className="panel upgrades">
-          <h3>Upgrades</h3>
+          <h2>Upgrades</h2>
           <div className="scroll-area">
             {currentCafe.upgrades.map((up) => {
               const cost = Math.floor(
@@ -257,7 +247,12 @@ const handleClick = (e) => {
                   <p>
                     +{up.cps} CPS — {cost} coins
                   </p>
-                  <button onClick={() => buyUpgrade(up.id)}>Buy</button>
+                  <button
+                    className="upgrade-btn"
+                    onClick={() => buyUpgrade(up.id)}
+                  >
+                    Buy
+                  </button>
                 </div>
               );
             })}
@@ -265,7 +260,22 @@ const handleClick = (e) => {
         </aside>
 
         <main className="cafe-area">
-          <CafeVisual cats={currentCafe.cats} upgrades={currentCafe.upgrades} background={currentCafe.background} />
+          <div className="cafe-tabs">
+            {cafes.map((cafe, i) => (
+              <button
+                key={cafe.id}
+                onClick={() => setCurrentCafeIndex(i)}
+                className={currentCafeIndex === i ? "active" : ""}
+              >
+                {cafe.name}
+              </button>
+            ))}
+          </div>
+          <CafeVisual
+            cats={currentCafe.cats}
+            upgrades={currentCafe.upgrades}
+            background={currentCafe.background}
+          />
         </main>
 
         {/* Mobile Toggle Button */}
@@ -278,7 +288,10 @@ const handleClick = (e) => {
         {/* Conditionally render cat roster */}
         {(window.innerWidth >= 768 || showCats) && (
           <aside className="panel cat-roster">
-            <h3>My Cats</h3>
+            <button className="hire-btn" onClick={hireCat}>
+              🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
+            </button>
+            <h2>My Cats</h2>
             <div className="scroll-area">
               {currentCafe.cats.map((cat, i) => (
                 <div key={i} className="cat-card">

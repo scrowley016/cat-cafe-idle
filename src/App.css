@@ -17,13 +17,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fdfcf7;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Chewy", system-ui;
   color: #4d3b31;
 }
 
 h1,
 h2 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Chewy", system-ui;
   font-size: 2.5rem;
   color: #5e3f2e;
 }
@@ -36,21 +36,7 @@ h2 {
 }
 
 button {
-  background-color: #d6bfa4;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: 'Joti One', cursive;
-}
-
-button:hover {
-  background-color: #c2a78f;
-  transform: translateY(-2px);
+  background: none;
 }
 
 .stats,
@@ -73,7 +59,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff7f0;
+  background-color: #fef7f2;
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -149,7 +135,7 @@ body,
   height: 100%;
   margin: 0;
   overflow: hidden;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Chewy", system-ui;
 }
 
 .game-container {
@@ -162,13 +148,24 @@ body,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f3f0e8;
-  padding: 12px 24px;
+  background: #f3eae1;
+  padding: 0px 24px;
   font-size: 1.2rem;
   font-weight: bold;
   border-bottom: 2px solid #d6c7b7;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
+.coin > div >h2, h3 {
+  padding: 0%;
+  margin: 0;
+  flex: 1;
+}
+
+.panel >h2 {
+  margin: 0;
+  padding: 0;
+}
+
 
 .hud-stats {
   display: flex;
@@ -199,7 +196,7 @@ button.serve-btn:hover {
 
 .panel {
   width: 240px;
-  background: #fcfaf6;
+  background: #f5f0ea;
   border-right: 2px solid #eee;
   padding: 10px;
   display: flex;
@@ -208,6 +205,7 @@ button.serve-btn:hover {
 
 .cat-roster {
   border-left: 2px solid #eee;
+  background: #f8e8e0;
 }
 
 .scroll-area {
@@ -219,8 +217,9 @@ button.serve-btn:hover {
 .cafe-area {
   flex: 1;
   position: relative;
-  background: #fff9f2;
+  background: #fff5ec;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -232,7 +231,7 @@ button.serve-btn:hover {
 }
 
 .upgrade-card {
-  background: #fff;
+  background: #fef7f2;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 8px;
@@ -246,7 +245,7 @@ button {
   margin-top: 4px;
   cursor: pointer;
   border-radius: 6px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Chewy", system-ui;
 }
 
 
@@ -305,4 +304,44 @@ button {
   .mobile-toggle {
     display: block;
   }
+}
+button.serve-btn {
+  background-color: #f77b72;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 24px 48px;
+  border-radius: 32px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border: 3px solid #d9534f;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+button.serve-btn:hover {
+  background-color: #d9534f;
+  transform: translateY(-4px);
+}
+
+button.hire-btn {
+  background-color: #6cbf84;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 12px 0px;
+  border-radius: 16px;
+  margin-top: 12px;
+  transition: background-color 0.3s ease;
+}
+button.hire-btn:hover {
+  background-color: #519e6d;
+}
+
+button.upgrade-btn {
+  background-color: #f4cf68;
+  color: #5a4522;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+button.upgrade-btn:hover {
+  background-color: #d4b358;
 }

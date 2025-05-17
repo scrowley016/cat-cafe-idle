@@ -9,9 +9,9 @@ const CafeVisual = ({ cats, upgrades, background }) => {
       <img src={background} alt="Cafe Background" className="cafe-bg" />
 
       {cats.map((cat, index) => {
-        const baseTop = 320;
-        const baseLeft = 250;
-        const spacingX = 80;
+        const baseTop = window.innerWidth < 500 ? 280 : 320;
+        const baseLeft = window.innerWidth < 500 ? 50 : 250;
+        const spacingX = window.innerWidth < 500 ? 50 : 80;
         const spacingY = 50;
         const columns = 5;
         const row = Math.floor(index / columns);
@@ -28,7 +28,7 @@ const CafeVisual = ({ cats, upgrades, background }) => {
             style={{
               top: `${baseTop + row * spacingY + jitterY}px`,
               left: `${baseLeft + col * spacingX + jitterX}px`,
-              height: "15%",
+              height: window.innerWidth < 500 ? "10%" : "15%",
               transform: `rotate(${cat.angle || 0}deg)`,
               transition: "transform 0.5s",
               zIndex: cat.zIndex || 2,

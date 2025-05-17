@@ -171,7 +171,7 @@ body,
 }
 
 .scroll-area-cat {
-  overflow-y: auto;
+flex-wrap: wrap;
   flex: 1;
   padding-right: 5px;
   display: flex;

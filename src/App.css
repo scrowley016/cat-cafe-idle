@@ -1,17 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+.chewy-regular {
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+h2,
+button {
+  font-family: "Chewy", system-ui;
+}
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #fff6ec;
+  background-color: #fdfcf7;
   font-family: 'Quicksand', sans-serif;
-  color: #5a3e36;
+  color: #4d3b31;
 }
 
 h1,
 h2 {
-  font-family: 'Shadows Into Light', cursive;
-  color: #6e4b3a;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.5rem;
+  color: #5e3f2e;
 }
 
 .container {
@@ -22,7 +36,7 @@ h2 {
 }
 
 button {
-  background-color: #f7c6a3;
+  background-color: #d6bfa4;
   border: none;
   border-radius: 12px;
   padding: 12px 24px;
@@ -31,10 +45,11 @@ button {
   margin: 10px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Joti One', cursive;
 }
 
 button:hover {
-  background-color: #f3a97a;
+  background-color: #c2a78f;
   transform: translateY(-2px);
 }
 
@@ -147,10 +162,33 @@ body,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fcefe3;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  border-bottom: 2px solid #e0cbbd;
+  background: #f3f0e8;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 2px solid #d6c7b7;
+  gap: 1rem;
+}
+
+.hud-stats {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+button.serve-btn {
+  background-color: #7a4c29;
+  color: #fffaf2;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 18px 36px;
+  border-radius: 20px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  border: 2px solid #5c3a1e;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+button.serve-btn:hover {
+  background-color: #5c3a1e;
+  transform: translateY(-3px);
 }
 
 .game-body {
@@ -161,7 +199,7 @@ body,
 
 .panel {
   width: 240px;
-  background: #fffaf5;
+  background: #fcfaf6;
   border-right: 2px solid #eee;
   padding: 10px;
   display: flex;
@@ -202,12 +240,13 @@ body,
 }
 
 button {
-  background: #f5c8aa;
+  background: #d6bfa4;
   border: none;
   padding: 6px 12px;
   margin-top: 4px;
   cursor: pointer;
   border-radius: 6px;
+  font-family: 'Quicksand', sans-serif;
 }
 
 

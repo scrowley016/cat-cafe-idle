@@ -6,11 +6,11 @@ import CafeVisual from "./CatVisual";
 function App() {
     const initialUpgrades = [
       { id: 1, name: "Cat Tower", baseCost: 50, cps: 1, count: 0, image: "/images/cat-tower.png" },
-      { id: 2, name: "Fancy Treats", baseCost: 150, cps: 3, count: 0, image: "/images/fancy-treats.png" },
-      { id: 3, name: "Laser Pointer", baseCost: 400, cps: 7, count: 0, image: "/images/laser-pointer.png" },
-      { id: 4, name: "Deluxe Cat Tree", baseCost: 900, cps: 15, count: 0, image: "/images/deluxe-cat-tree.png" },
-      { id: 5, name: "Sunbeam Lounger", baseCost: 2500, cps: 35, count: 0, image: "/images/sunbeam-lounger.png" },
-      { id: 6, name: "Automated Treat Dispenser", baseCost: 7000, cps: 90, count: 0, image: "/images/treats.png" },
+      { id: 2, name: "Fancy Treats", baseCost: 150, cps: 3, count: 0, image: "/images/treats.png" },
+      { id: 3, name: "Laser Pointer", baseCost: 400, cps: 7, count: 0, image: "/images/laser.png" },
+      { id: 4, name: "Deluxe Cat Tree", baseCost: 900, cps: 15, count: 0, image: "/images/deluxe-tree.png" },
+      { id: 5, name: "Sunbeam Lounger", baseCost: 2500, cps: 35, count: 0, image: "/images/bed.png" },
+      { id: 6, name: "Automated Treat Dispenser", baseCost: 7000, cps: 90, count: 0, image: "/images/feeder.png" },
       { id: 7, name: "New Café Location", baseCost: 45000, cps: 280, count: 0}
     ];
   
@@ -27,7 +27,7 @@ function App() {
   const [coins, setCoins] = useState(() => {
     return parseInt(localStorage.getItem("coins")) || 0;
   });
-  const [coinsPerClick, setCoinsPerClick] = useState(1);
+  const [coinsPerClick] = useState(1);
   const [coinsPerSecond, setCoinsPerSecond] = useState(() => {
     return parseInt(localStorage.getItem("cps")) || 0;
   });

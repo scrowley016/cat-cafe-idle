@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import confetti from 'canvas-confetti';
 import CafeVisual from "./CatVisual";
+import Modal from "react-modal";
 
 function App() {
     const initialUpgrades = [
@@ -21,7 +22,8 @@ function App() {
       { name: "Wizard Café", background: "/images/wizard-cafe-background.jpg" },
       { name: "Planet Café", background: "/images/planet-cafe-background.jpg" },
     ];
-    const maxCatsPerCafe = 20;
+  const maxCatsPerCafe = 20;
+  Modal.setAppElement("#root");
   
   const [floaters, setFloaters] = useState([]);
   const [coins, setCoins] = useState(() => {
@@ -65,7 +67,13 @@ function App() {
     "Dusty", "Freya", "Cloverleaf", "Zelda", "Pixie", "Nova", "Tinsel", "Galaxy",
     "Choco", "Lumi", "Bamboo", "Spice", "Soot", "Ash", "Rolo", "Tapioca",
     "Clementine", "Wiggles", "Goose", "Quill", "Boo", "Shadow", "Sprinkle", "Mallow",
-    "Mochi Pop", "Snickerdoodle", "Twinkle", "Blossom", "Flapjack", "Dumpling", "Brûlée", "Twix"
+    "Mochi Pop", "Snickerdoodle", "Twinkle", "Blossom", "Flapjack", "Dumpling", "Brûlée", "Twix", "Puff","Ari", "Mimi", "Nala", "Leo", "Loki", "Milo", "Bella", "Luna", "Oliver", "Charlie",
+    "Max", "Chloe", "Sophie", "Coco", "Rocky", "Zoe", "Toby", "Daisy", "Gizmo", "Mittens",
+    "Shadow", "Smokey", "Whiskers", "Jasper", "Mochi", "Ginny", "Willow", "Milo", "Oliver", "Luna", "Bella",
+    "Charlie", "Max", "Chloe", "Sophie", "Coco", "Rocky", "Zoe", "Toby", "Daisy", "Gizmo",
+    "Mittens", "Shadow", "Smokey", "Whiskers", "Jasper", "Mochi", "Ginny", "Willow",
+    "Milo", "Oliver", "Luna", "Bella", "Charlie", "Max", "Chloe", "Sophie", "Coco", "Jack","Carly", "Ralph", "Misty", "Penny", "Sasha", "Tigger", "Ziggy", "Cleo", "Nina", "Rusty",
+    "Misty", "Penny", "Sasha", "Tigger", "Ziggy", "Cleo", "Nina", "Rusty", "Gizmo", "Mittens",
   ];
 
   const catImages = [
@@ -73,9 +81,20 @@ function App() {
     "/images/cat2.png",
     "/images/cat3.png",
     "/images/cat4.png",
+    "/images/cat5.png",
     "/images/cat6.png",
     "/images/cat7.png",
     "/images/cat8.png",
+    "/images/cat9.png",
+    "/images/cat10.png",
+    "/images/cat11.png",
+    "/images/cat12.png",
+    "/images/cat13.png",
+    "/images/cat14.png",
+    "/images/cat15.png",
+    "/images/cat16.png",
+    "/images/cat17.png",
+    "/images/cat18.png",
   ];
 
   const rareCats = [
@@ -232,11 +251,17 @@ const handleClick = (e) => {
     <div className="game-container">
       <header className="hud">
         <div className="coin">
-          <div> <h2>💰 Coins: {coins}</h2></div>
+          <div>
+            <h2>
+              <img src="/images/coin-stack.png" alt="coins" style={{ height: "1.5em", verticalAlign: "middle" }} /> Coins: {coins}
+            </h2>
+          </div>
           <div> <h3>⚡ Coins Per Second: {coinsPerSecond}</h3></div>
         </div>
         <button onClick={handleClick} className="serve-btn">
-          ☕ Serve Customer
+          <img src="/images/coin.png" alt="coin" style={{ height: "1.5em", verticalAlign: "middle", marginRight: "8px" }} />
+          Serve Customer
+          <img src="/images/coin.png" alt="coin" style={{ height: "1.5em", verticalAlign: "middle", marginLeft: "8px" }} />
         </button>
       </header>
 
@@ -268,36 +293,34 @@ const handleClick = (e) => {
               })}
             </div>
           </aside>
-        ) : (
-          showUpgrades && (
-            <div className="modal upgrades-modal">
-              <h2>Upgrades</h2>
-              <div className="scroll-area">
-                {currentCafe.upgrades.map((up) => {
-                  const cost = Math.floor(
-                    up.baseCost * Math.pow(1.3, up.count) * (1 - discount)
-                  );
-                  return (
-                    <div key={up.id} className="upgrade-card">
-                      <p>
-                        <strong>{up.name}</strong> (x{up.count})
-                      </p>
-                      <p>
-                        +{up.cps} CPS — {cost} coins
-                      </p>
-                      <button
-                        className="upgrade-btn"
-                        onClick={() => buyUpgrade(up.id)}
-                      >
-                        Buy
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )
-        )}
+        ) : null}
+
+        <Modal
+          isOpen={showUpgrades}
+          onRequestClose={() => setShowUpgrades(false)}
+          contentLabel="Upgrades"
+          className="game-modal"
+          overlayClassName="game-modal-overlay"
+        >
+          <h2>Upgrades</h2>
+          <div className="scroll-area">
+            {currentCafe.upgrades.map((up) => {
+              const cost = Math.floor(
+                up.baseCost * Math.pow(1.3, up.count) * (1 - discount)
+              );
+              return (
+                <div key={up.id} className="upgrade-card">
+                  <p><strong>{up.name}</strong> (x{up.count})</p>
+                  <p>+{up.cps} CPS — {cost} coins</p>
+                  <button className="upgrade-btn" onClick={() => buyUpgrade(up.id)}>
+                    Buy
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <button onClick={() => setShowUpgrades(false)} className="close-btn">Close</button>
+        </Modal>
 
         <main className="cafe-area">
           <div className="cafe-tabs">
@@ -331,10 +354,10 @@ const handleClick = (e) => {
         {window.innerWidth >= 768 ? (
           <aside className="panel cat-roster">
             <button className="hire-btn" onClick={hireCat}>
-              🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
+              Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
             </button>
             <h2>My Cats</h2>
-            <div className="scroll-area">
+            <div className="scroll-area-cat">
               {currentCafe.cats.map((cat, i) => (
                 <div key={i} className="cat-card">
                   <img src={cat.image} alt={cat.name} />
@@ -347,28 +370,33 @@ const handleClick = (e) => {
               ))}
             </div>
           </aside>
-        ) : (
-          showCats && (
-            <div className="modal cat-modal">
-              <button className="hire-btn" onClick={hireCat}>
-                🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
-              </button>
-              <h2>My Cats</h2>
-              <div className="scroll-area">
-                {currentCafe.cats.map((cat, i) => (
-                  <div key={i} className="cat-card">
-                    <img src={cat.image} alt={cat.name} />
-                    <p>
-                      {cat.name} {cat.rare && "🌟"}
-                      <br />
-                      <small>{cat.effect}</small>
-                    </p>
-                  </div>
-                ))}
+        ) : null}
+
+        <Modal
+          isOpen={showCats}
+          onRequestClose={() => setShowCats(false)}
+          contentLabel="My Cats"
+          className="game-modal"
+          overlayClassName="game-modal-overlay"
+        >
+          <button className="hire-btn" onClick={hireCat}>
+            🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
+          </button>
+          <h2>My Cats</h2>
+          <div className="scroll-area">
+            {currentCafe.cats.map((cat, i) => (
+              <div key={i} className="cat-card">
+                <img src={cat.image} alt={cat.name} />
+                <p>
+                  {cat.name} {cat.rare && "🌟"}
+                  <br />
+                  <small>{cat.effect}</small>
+                </p>
               </div>
-            </div>
-          )
-        )}
+            ))}
+          </div>
+          <button onClick={() => setShowCats(false)} className="close-btn">Close</button>
+        </Modal>
       </div>
 
       {floaters.map((f) => (

@@ -16,16 +16,16 @@ button {
 body {
   margin: 0;
   padding: 0;
-  background-color: #fdfcf7;
+  background-color: #fefaff;
   font-family: "Chewy", system-ui;
-  color: #4d3b31;
+  color: #3a3a3a;
 }
 
 h1,
 h2 {
   font-family: "Chewy", system-ui;
   font-size: 2.5rem;
-  color: #5e3f2e;
+  color: #2e2e2e;
 }
 
 .container {
@@ -59,7 +59,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fef7f2;
+  background-color: #fff1fa;
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -136,6 +136,8 @@ body,
   overflow-x: hidden;
   overflow-y: auto;
   font-family: "Chewy", system-ui;
+  background-color: #fdfaff;
+  color: #3a3a3a;
 }
 
 .game-container {
@@ -148,11 +150,11 @@ body,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f3eae1;
+  background: #fce1ef;
   padding: 0px 24px;
   font-size: 1.2rem;
   font-weight: bold;
-  border-bottom: 2px solid #d6c7b7;
+  border-bottom: 2px solid #e5bcd3;
   /* gap: 1rem; */
 }
 .coin > div >h2, h3 {
@@ -164,6 +166,16 @@ body,
 .panel >h2 {
   margin: 0;
   padding: 0;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.scroll-area-cat {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -173,18 +185,19 @@ body,
   align-items: center;
 }
 button.serve-btn {
-  background-color: #7a4c29;
+  background-color: #ff8fa4;
   color: #fffaf2;
   font-size: 1.6rem;
   font-weight: bold;
   padding: 18px 36px;
   border-radius: 20px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  border: 2px solid #5c3a1e;
+  border: 3px solid #ff6d8b;
   transition: transform 0.2s ease, background-color 0.3s ease;
+  margin-bottom: .25rem;
 }
 button.serve-btn:hover {
-  background-color: #5c3a1e;
+  background-color: #ff6d8b;
   transform: translateY(-3px);
 }
 
@@ -196,7 +209,7 @@ button.serve-btn:hover {
 
 .panel {
   width: 240px;
-  background: #f5f0ea;
+  background: #f4e8ff;
   border-right: 2px solid #eee;
   padding: 10px;
   display: flex;
@@ -205,7 +218,7 @@ button.serve-btn:hover {
 
 .cat-roster {
   border-left: 2px solid #eee;
-  background: #f8e8e0;
+  background: #e6f5f3;
 }
 
 .scroll-area {
@@ -217,21 +230,24 @@ button.serve-btn:hover {
 .cafe-area {
   flex: 1;
   position: relative;
-  background: #fff5ec;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.cat-card {
+  padding: 0.5rem;
+}
+
 .cat-card img {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
 }
 
 .upgrade-card {
-  background: #fef7f2;
+  background: #fff1fa;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 8px;
@@ -316,23 +332,23 @@ button {
   }
 }
 button.serve-btn {
-  background-color: #f77b72;
+  background-color: #ff8fa4;
   color: white;
   font-size: 2rem;
   font-weight: bold;
   padding: 24px 48px;
   border-radius: 32px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  border: 3px solid #d9534f;
+  border: 3px solid #ff6d8b;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 button.serve-btn:hover {
-  background-color: #d9534f;
+  background-color: #ff6d8b;
   transform: translateY(-4px);
 }
 
 button.hire-btn {
-  background-color: #6cbf84;
+  background-color: #65d3b0;
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
@@ -342,16 +358,35 @@ button.hire-btn {
   transition: background-color 0.3s ease;
 }
 button.hire-btn:hover {
-  background-color: #519e6d;
+  background-color: #4cb998;
 }
 
 button.upgrade-btn {
-  background-color: #f4cf68;
-  color: #5a4522;
+  background-color: #ffe48c;
+  color: #2e2e2e;
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 12px;
 }
 button.upgrade-btn:hover {
-  background-color: #d4b358;
+  background-color: #f9d36e;
+}
+
+.game-modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.game-modal {
+  background: #fffaf3;
+  padding: 20px;
+  max-width: 90%;
+  margin: 10vh auto;
+  border-radius: 16px;
+  outline: none;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

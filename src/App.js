@@ -73,7 +73,6 @@ function App() {
     "/images/cat2.png",
     "/images/cat3.png",
     "/images/cat4.png",
-    "/images/cat5.png",
     "/images/cat6.png",
     "/images/cat7.png",
     "/images/cat8.png",

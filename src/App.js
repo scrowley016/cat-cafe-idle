@@ -253,15 +253,39 @@ const handleClick = (e) => {
         <div className="coin">
           <div>
             <h2>
-              <img src="/images/coin-stack.png" alt="coins" style={{ height: "1.5em", verticalAlign: "middle" }} /> Coins: {coins}
+              <img
+                src="/images/coin-stack.png"
+                alt="coins"
+                style={{ height: "1.5em", verticalAlign: "middle" }}
+              />{" "}
+              Coins: {coins}
             </h2>
           </div>
-          <div> <h3>⚡ Coins Per Second: {coinsPerSecond}</h3></div>
+          <div>
+            {" "}
+            <h3>⚡ Coins Per Second: {coinsPerSecond}</h3>
+          </div>
         </div>
         <button onClick={handleClick} className="serve-btn">
-          <img src="/images/coin.png" alt="coin" style={{ height: "1.5em", verticalAlign: "middle", marginRight: "8px" }} />
+          <img
+            src="/images/coin.png"
+            alt="coin"
+            style={{
+              height: "1.5em",
+              verticalAlign: "middle",
+              marginRight: "8px",
+            }}
+          />
           Serve Customer
-          <img src="/images/coin.png" alt="coin" style={{ height: "1.5em", verticalAlign: "middle", marginLeft: "8px" }} />
+          <img
+            src="/images/coin.png"
+            alt="coin"
+            style={{
+              height: "1.5em",
+              verticalAlign: "middle",
+              marginLeft: "8px",
+            }}
+          />
         </button>
       </header>
 
@@ -310,16 +334,25 @@ const handleClick = (e) => {
               );
               return (
                 <div key={up.id} className="upgrade-card">
-                  <p><strong>{up.name}</strong> (x{up.count})</p>
-                  <p>+{up.cps} CPS — {cost} coins</p>
-                  <button className="upgrade-btn" onClick={() => buyUpgrade(up.id)}>
+                  <p>
+                    <strong>{up.name}</strong> (x{up.count})
+                  </p>
+                  <p>
+                    +{up.cps} CPS — {cost} coins
+                  </p>
+                  <button
+                    className="upgrade-btn"
+                    onClick={() => buyUpgrade(up.id)}
+                  >
                     Buy
                   </button>
                 </div>
               );
             })}
           </div>
-          <button onClick={() => setShowUpgrades(false)} className="close-btn">Close</button>
+          <button onClick={() => setShowUpgrades(false)} className="close-btn">
+            Close
+          </button>
         </Modal>
 
         <main className="cafe-area">
@@ -328,7 +361,9 @@ const handleClick = (e) => {
               <button
                 key={cafe.id}
                 onClick={() => setCurrentCafeIndex(i)}
-                className={currentCafeIndex === i ? "active" : ""}
+                className={
+                  currentCafeIndex === i ? "active cafe-button" : "cafe-button"
+                }
               >
                 {cafe.name}
               </button>
@@ -343,10 +378,16 @@ const handleClick = (e) => {
 
         {/* Mobile Toggle Buttons */}
         <div className="mobile-toggle">
-          <button onClick={() => setShowCats(!showCats)} className="toggle-button">
+          <button
+            onClick={() => setShowCats(!showCats)}
+            className="toggle-button"
+          >
             {showCats ? "Hide Cats 🐾" : "Show Cats 🐱"}
           </button>
-          <button onClick={() => setShowUpgrades(!showUpgrades)} className="toggle-button">
+          <button
+            onClick={() => setShowUpgrades(!showUpgrades)}
+            className="toggle-button"
+          >
             {showUpgrades ? "Hide Upgrades 🛠️" : "Show Upgrades 📦"}
           </button>
         </div>
@@ -379,11 +420,11 @@ const handleClick = (e) => {
           className="game-modal"
           overlayClassName="game-modal-overlay"
         >
-          <button className="hire-btn" onClick={hireCat}>
-            🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
+          <button className="hire-btn-mbl" onClick={hireCat}>
+           Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
           </button>
           <h2>My Cats</h2>
-          <div className="scroll-area">
+          <div className="scroll-area-cat">
             {currentCafe.cats.map((cat, i) => (
               <div key={i} className="cat-card">
                 <img src={cat.image} alt={cat.name} />
@@ -395,7 +436,9 @@ const handleClick = (e) => {
               </div>
             ))}
           </div>
-          <button onClick={() => setShowCats(false)} className="close-btn">Close</button>
+          <button onClick={() => setShowCats(false)} className="close-btn">
+            Close
+          </button>
         </Modal>
       </div>
 

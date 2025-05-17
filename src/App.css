@@ -25,7 +25,7 @@ h1,
 h2 {
   font-family: "Chewy", system-ui;
   font-size: 2.5rem;
-  color: #2e2e2e;
+  color: #2f2f2f;
 }
 
 .container {
@@ -298,7 +298,6 @@ button {
     flex: 1;
     order: 1;
     height: auto;
-    padding: 16px 0;
   }
 
   .scroll-area {
@@ -346,7 +345,7 @@ button {
   .serve-btn {
     width: 100%;
     font-size: 1.8rem;
-    padding: 20px;
+    padding: 0px !important;
     border-radius: 28px;
   }
 }
@@ -366,6 +365,22 @@ button.serve-btn:hover {
   transform: translateY(-4px);
 }
 
+button.hire-btn-mbl{
+  background-color: #65d3b0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 12px 36px;
+  border-radius: 16px;
+  margin-top: 12px;
+  transition: background-color 0.3s ease;
+}
+button.hire-btn-mbl:hover {
+  background-color: #4cb998;
+}
+
+
+
 button.hire-btn {
   background-color: #65d3b0;
   color: white;
@@ -382,7 +397,7 @@ button.hire-btn:hover {
 
 button.upgrade-btn {
   background-color: #ffe48c;
-  color: #2e2e2e;
+  color: #2f2f2f;
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 12px;
@@ -409,9 +424,9 @@ button.upgrade-btn:hover {
   overflow-y: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.cafe-tab {
+.cafe-button {
   background-color: #ffdde7;
-  color: #3a3a3a;
+  color: #2f2f2f;
   font-weight: bold;
   padding: 8px 16px;
   border: none;
@@ -421,7 +436,13 @@ button.upgrade-btn:hover {
   transition: background-color 0.3s ease;
 }
 
-.cafe-tab:hover,
-.cafe-tab.active {
+.cafe-button:hover,
+.cafe-button.active {
   background-color: #ffc5d4;
+}
+
+.ReactModal__Content h2{
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }

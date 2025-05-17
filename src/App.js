@@ -36,6 +36,7 @@ function App() {
   });
   const [discount, setDiscount] = useState(0);
   const [showCats, setShowCats] = useState(false);
+  const [showUpgrades, setShowUpgrades] = useState(false);
   const [cafes, setCafes] = useState(() => {
     const saved = localStorage.getItem("cafes");
     return saved
@@ -153,12 +154,20 @@ const handleClick = (e) => {
         const effect =
           rareEffects[Math.floor(Math.random() * rareEffects.length)];
         effect.apply();
-        newCat = { ...rare, rare: true, effect: effect.label };
+        newCat = {
+          ...rare,
+          rare: true,
+          effect: effect.label,
+          jitterX: Math.floor(Math.random() * 20) - 10,
+          jitterY: Math.floor(Math.random() * 10) - 5,
+        };
       } else {
         newCat = {
           name: catNames[Math.floor(Math.random() * catNames.length)],
           image: catImages[Math.floor(Math.random() * catImages.length)],
           rare: false,
+          jitterX: Math.floor(Math.random() * 20) - 10,
+          jitterY: Math.floor(Math.random() * 10) - 5,
         };
       }
 
@@ -232,32 +241,63 @@ const handleClick = (e) => {
       </header>
 
       <div className="game-body">
-        <aside className="panel upgrades">
-          <h2>Upgrades</h2>
-          <div className="scroll-area">
-            {currentCafe.upgrades.map((up) => {
-              const cost = Math.floor(
-                up.baseCost * Math.pow(1.3, up.count) * (1 - discount)
-              );
-              return (
-                <div key={up.id} className="upgrade-card">
-                  <p>
-                    <strong>{up.name}</strong> (x{up.count})
-                  </p>
-                  <p>
-                    +{up.cps} CPS — {cost} coins
-                  </p>
-                  <button
-                    className="upgrade-btn"
-                    onClick={() => buyUpgrade(up.id)}
-                  >
-                    Buy
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </aside>
+        {window.innerWidth >= 768 ? (
+          <aside className="panel upgrades">
+            <h2>Upgrades</h2>
+            <div className="scroll-area">
+              {currentCafe.upgrades.map((up) => {
+                const cost = Math.floor(
+                  up.baseCost * Math.pow(1.3, up.count) * (1 - discount)
+                );
+                return (
+                  <div key={up.id} className="upgrade-card">
+                    <p>
+                      <strong>{up.name}</strong> (x{up.count})
+                    </p>
+                    <p>
+                      +{up.cps} CPS — {cost} coins
+                    </p>
+                    <button
+                      className="upgrade-btn"
+                      onClick={() => buyUpgrade(up.id)}
+                    >
+                      Buy
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </aside>
+        ) : (
+          showUpgrades && (
+            <div className="modal upgrades-modal">
+              <h2>Upgrades</h2>
+              <div className="scroll-area">
+                {currentCafe.upgrades.map((up) => {
+                  const cost = Math.floor(
+                    up.baseCost * Math.pow(1.3, up.count) * (1 - discount)
+                  );
+                  return (
+                    <div key={up.id} className="upgrade-card">
+                      <p>
+                        <strong>{up.name}</strong> (x{up.count})
+                      </p>
+                      <p>
+                        +{up.cps} CPS — {cost} coins
+                      </p>
+                      <button
+                        className="upgrade-btn"
+                        onClick={() => buyUpgrade(up.id)}
+                      >
+                        Buy
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )
+        )}
 
         <main className="cafe-area">
           <div className="cafe-tabs">
@@ -278,15 +318,17 @@ const handleClick = (e) => {
           />
         </main>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile Toggle Buttons */}
         <div className="mobile-toggle">
-          <button onClick={() => setShowCats(!showCats)}>
+          <button onClick={() => setShowCats(!showCats)} className="toggle-button">
             {showCats ? "Hide Cats 🐾" : "Show Cats 🐱"}
+          </button>
+          <button onClick={() => setShowUpgrades(!showUpgrades)} className="toggle-button">
+            {showUpgrades ? "Hide Upgrades 🛠️" : "Show Upgrades 📦"}
           </button>
         </div>
 
-        {/* Conditionally render cat roster */}
-        {(window.innerWidth >= 768 || showCats) && (
+        {window.innerWidth >= 768 ? (
           <aside className="panel cat-roster">
             <button className="hire-btn" onClick={hireCat}>
               🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
@@ -305,6 +347,27 @@ const handleClick = (e) => {
               ))}
             </div>
           </aside>
+        ) : (
+          showCats && (
+            <div className="modal cat-modal">
+              <button className="hire-btn" onClick={hireCat}>
+                🐱 Hire Cat (Cost: {Math.floor(50 * Math.pow(1.375, cats))})
+              </button>
+              <h2>My Cats</h2>
+              <div className="scroll-area">
+                {currentCafe.cats.map((cat, i) => (
+                  <div key={i} className="cat-card">
+                    <img src={cat.image} alt={cat.name} />
+                    <p>
+                      {cat.name} {cat.rare && "🌟"}
+                      <br />
+                      <small>{cat.effect}</small>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
         )}
       </div>
 

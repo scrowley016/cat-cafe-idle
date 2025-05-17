@@ -132,9 +132,9 @@ button {
 html,
 body,
 #root {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: "Chewy", system-ui;
 }
 
@@ -251,21 +251,24 @@ button {
 
 @media (max-width: 768px) {
   .hud {
+    padding: 8px 12px;
+    font-size: 1rem;
     flex-wrap: wrap;
-    font-size: 0.95rem;
-    gap: 10px;
+    gap: 8px;
   }
 
   .game-body {
     flex-direction: column;
+    height: auto;
   }
 
   .panel {
     width: 100%;
-    height: auto;
-    max-height: 40vh;
+    max-height: none;
     border: none;
     order: 3;
+    padding: 12px;
+    margin-bottom: 1rem;
   }
 
   .cat-roster {
@@ -277,18 +280,25 @@ button {
   .cafe-area {
     flex: 1;
     order: 1;
-    height: 100%;
+    height: auto;
+    padding: 16px 0;
   }
 
   .scroll-area {
-    max-height: 200px;
-    overflow-y: auto;
+    max-height: 300px;
   }
 
   .upgrade-card button,
   .hud button {
     font-size: 0.9rem;
     padding: 6px 12px;
+  }
+
+  .serve-btn {
+    width: 100%;
+    font-size: 1.8rem;
+    padding: 20px;
+    border-radius: 28px;
   }
 }
 

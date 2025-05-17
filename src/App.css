@@ -270,6 +270,7 @@ button {
     padding: 8px 12px;
     font-size: 1rem;
     flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
   }
 
@@ -330,6 +331,24 @@ button {
   .mobile-toggle {
     display: block;
   }
+
+   .toggle-button{
+    background-color: #ff8fa4;
+      color: white;
+      font-weight: bold;
+      border-radius: 32px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      border: 3px solid #ff6d8b;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+
+   }
+
+  .serve-btn {
+    width: 100%;
+    font-size: 1.8rem;
+    padding: 20px;
+    border-radius: 28px;
+  }
 }
 button.serve-btn {
   background-color: #ff8fa4;
@@ -389,4 +408,20 @@ button.upgrade-btn:hover {
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.cafe-tab {
+  background-color: #ffdde7;
+  color: #3a3a3a;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 32px;
+  margin: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.cafe-tab:hover,
+.cafe-tab.active {
+  background-color: #ffc5d4;
 }

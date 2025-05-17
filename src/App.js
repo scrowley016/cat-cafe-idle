@@ -22,7 +22,6 @@ function App() {
       { name: "Planet Café", background: "/images/planet-cafe-background.jpg" },
     ];
     const maxCatsPerCafe = 20;
-    const maxUpgradesPerCafe = 25;
   
   const [floaters, setFloaters] = useState([]);
   const [coins, setCoins] = useState(() => {
